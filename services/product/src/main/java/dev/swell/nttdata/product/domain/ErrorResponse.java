@@ -1,0 +1,8 @@
+package dev.swell.nttdata.product.domain;
+
+import java.util.Map;
+
+public record ErrorResponse(
+        Map<String, String> errors
+) {
+}
