@@ -1,0 +1,6 @@
+spring:
+  application:
+    config:
+      product-url: http://localhost:8100/api/v1/products
+server:
+  port: 8200

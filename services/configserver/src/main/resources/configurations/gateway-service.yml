@@ -1,0 +1,24 @@
+server:
+  port: 8700
+
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+          routes:
+            - id: PRODUCT-SERVICE
+              uri: lb://PRODUCT-SERVICE
+              predicates:
+                - Path=/produtos/**
+              filters:
+                - RewritePath=/produtos(?<segment>.*)?, /api/v1/products${segment}
+            - id: ORDER-SERVICE
+              uri: lb://ORDER-SERVICE
+              predicates:
+                - Path=/pedidos/**
+              filters:
+                - RewritePath=/pedidos(?<segment>.*)?, /api/v1/pedidos${segment}
