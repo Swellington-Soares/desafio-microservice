@@ -73,6 +73,10 @@ O sistema é dividido em módulos, cada um com uma função específica:
 
 ---
 
+# securança
+
+No projeto configurei para usar OAuth2 e como backend de autenticação estou usando o Keycloak
+
 ## como executar 
 
 A maneira mais fácil é usando o Intellij e abrir o projeto pelo mesmo.

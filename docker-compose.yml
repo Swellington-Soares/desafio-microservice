@@ -1,4 +1,65 @@
+version: "3.8"
+
 services:
+  config-server-microservice:
+    container_name: ms-configserver
+    build:
+      context: ./services/configserver
+    ports:
+      - "8888:8888"
+    networks:
+      - ms-net
+
+  discovery-microservice:
+    container_name: ms-discorvery
+    build:
+      context: ./services/discovery
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config-server-microservice
+    networks:
+      - ms-net
+
+
+  pedidos-microservice:
+    container_name: ms-pedidos
+    build:
+      context: ./services/order
+    ports:
+      - "8200:8200"
+    depends_on:
+      - config-server-microservice
+      - discovery-microservice
+    networks:
+      - ms-net
+
+  produtos-microservice:
+    container_name: ms-produtos
+    build:
+      context: ./services/product
+    ports:
+      - "8100:8100"
+    depends_on:
+      - config-server-microservice
+      - discovery-microservice
+    networks:
+      - ms-net
+
+  gateway-microservice:
+    container_name: gateway-microservice
+    build:
+      context: ./services/gateway
+    ports:
+      - "8700:8700"
+    depends_on:
+      - config-server-microservice
+      - discovery-microservice
+      - produtos-microservice
+      - pedidos-microservice
+    networks:
+      - ms-net
+
   keycloak:
     container_name: keycloak-ms
     image: quay.io/keycloak/keycloak:26.2.5
@@ -8,10 +69,10 @@ services:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
     networks:
-      - microservice-net
+      - ms-net
     command:
       - "start-dev"
 
 networks:
-  microservice-net:
+  ms-net:
     driver: bridge
