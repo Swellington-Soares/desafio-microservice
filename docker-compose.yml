@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   config-server-microservice:
     container_name: ms-configserver
@@ -11,7 +9,7 @@ services:
       - ms-net
 
   discovery-microservice:
-    container_name: ms-discorvery
+    container_name: ms-discovery
     build:
       context: ./services/discovery
     ports:
@@ -47,7 +45,7 @@ services:
       - ms-net
 
   gateway-microservice:
-    container_name: gateway-microservice
+    container_name: ms-gateway
     build:
       context: ./services/gateway
     ports:

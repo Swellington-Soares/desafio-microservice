@@ -77,11 +77,11 @@ O sistema é dividido em módulos, cada um com uma função específica:
 
 No projeto configurei para usar OAuth2 e como backend de autenticação estou usando o Keycloak
 
-## como executar 
+## Executando e fazendo o deploy
 
-A maneira mais fácil é usando o Intellij e abrir o projeto pelo mesmo.
+tanto pra executar ou fazer o deploy você vai precisa de ter o Docker instalado e ter o SDK 24+ do Java.
 
-## como fazer o deploy
+Para executar o projeto, 
 
 
 
