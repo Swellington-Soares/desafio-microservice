@@ -67,9 +67,7 @@ O sistema é dividido em módulos, cada um com uma função específica:
 
 | Método | Endpoint         | Descrição                                  |
 |--------|------------------|--------------------------------------------|
-| POST   | `/pedidos`       | Realiza o cadastro de um novo pedido       |
-| GET    | `/pedidos`       | Retorna a lista de pedidos cadastrados     |
-| GET    | `/pedidos/{id}`  | Retorna os detalhes de um pedido específico|
+| POST   | `/pedidos/create`       | Realiza o cadastro de um novo pedido       |
 
 ---
 
